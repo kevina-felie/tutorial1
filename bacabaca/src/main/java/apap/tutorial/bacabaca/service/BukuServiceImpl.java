@@ -35,4 +35,33 @@ public class BukuServiceImpl implements BukuService {
         }
         return bukuYangDicari;
     }
+
+    @Override
+    public Buku updateBuku(UUID id, Buku newBuku) {
+        Buku bukuYangDiubah = getBukuById(id);
+
+        if (bukuYangDiubah != null) {
+            bukuYangDiubah.setJudul(newBuku.getJudul());
+            bukuYangDiubah.setPenulis(newBuku.getPenulis());
+            bukuYangDiubah.setTahunTerbit(newBuku.getTahunTerbit());
+            bukuYangDiubah.setHarga(newBuku.getHarga());
+        }
+
+        return bukuYangDiubah;
+    }
+
+    @Override
+    public boolean isJudulExist(String judul) {
+        return listBuku.stream().anyMatch(b -> b.getJudul().equals(judul));
+    }
+
+    @Override
+    public boolean isJudulExist(UUID id, String judul) {
+        return listBuku.stream().anyMatch(b -> b.getJudul().equals(judul) && !b.getId().equals(id));
+    }
+
+    @Override
+    public void deleteBuku(UUID id) {
+        listBuku.remove(getBukuById(id));
+    }
 }

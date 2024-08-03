@@ -11,4 +11,13 @@ public interface BukuService {
     List<Buku> getAllBuku();
 
     Buku getBukuById(UUID id);
+
+    Buku updateBuku(UUID id, Buku buku);
+
+    boolean isJudulExist(String judul);
+
+    boolean isJudulExist(UUID id, String judul);
+
+    void deleteBuku(UUID id);
+
 }

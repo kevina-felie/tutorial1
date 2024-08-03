@@ -6,7 +6,12 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" />
-    <title>Home</title>
+    <title>Daftar Buku</title>
+    <style>
+        .btn-update {
+            background-color: or;
+        }
+    </style>
 </head>
 
 <body>
@@ -21,7 +26,9 @@
                         <h5 th:text="${buku.judul}" class="card-title"></h5>
                         <h6 th:text="${buku.penulis}" class="card-subtitle mb-2"></h6>
                         <p th:text="'Rp'+${buku.harga}" class="card-text text-muted"></p>
-                        <a type="button" class="btn btn-md btn-primary" th:href="@{/buku?id={idBuku}(idBuku=${buku.id})}">Detail</a>
+                        <a type="button" class="btn btn-md btn-primary" th:href="@{/buku/{id}(id=${buku.id})}">Detail</a>
+                        <a type="button" class="btn btn-md btn-warning" th:href="@{/buku/{id}/update(id=${buku.id})}">Update</a>
+                        <a type="button" class="btn btn-md btn-danger" th:href="@{/buku/{id}/delete(id=${buku.id})}">Delete</a>
                     </div>
                 </div>
             </div>
